@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enchantique Elegance | Perfumes Importados Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* DESIGN SYSTEM & VARIÁVEIS DE CORES (SOFISTICAÇÃO E ACESSIBILIDADE) */
+        :root {
+            --bg-principal: #FAF8F4; /* Bege luxo suave */
+            --branco: #ffffff;
+            --preto-luxo: #111111;
+            --ouro-velho: #8c7853;
+            --cinza-suave: #f4f0e8;
+            --borda: #efe7dc;
+            --texto-principal: #2d2922;
+            --transicao-suave: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --font-luxury: 'Cinzel', serif;
+            --font-text: 'Montserrat', sans-serif;
+        }
+
+        /* MODO ESCURO */
+        body.dark-mode {
+            --bg-principal: #12110f;
+            --branco: #1c1a17;
+            --preto-luxo: #faf8f4;
+            --ouro-velho: #c5b390;
+            --cinza-suave: #2a2622;
+            --borda: #332f2a;
+            --texto-principal: #e5dfd5;
+        }
+
+        /* MODO TDAH (Focado em foco, redução de estímulo visual e legibilidade máxima) */
+        body.tdah-mode {
+            --font-text: 'Lexend', sans-serif;
+            --transicao-suave: none !important; /* Sem animações que causam distração */
+        }
+        body.tdah-mode * {
+            animation: none !important;
+            transition: none !important;
+        }
+        body.tdah-mode .product-card:hover {
+            transform: none !important;
+            box-shadow: none !important;
+            border-color: var(--ouro-velho) !important;
+        }
+        body.tdah-mode .product-image {
+            transform: none !important;
+        }
+
+        /* CONFIGURAÇÕES GERAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--font-text);
+            background-color: var(--bg-principal);
+            color: var(--texto-principal);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transicao-suave);
+        }
+
+        /* BARRA SUPERIOR DE BENEFÍCIOS (FIXA) */
+        .top-benefits-bar {
+            background-color: #111111;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 0.75rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .benefit-item svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--ouro-velho);
+        }
+
+        /* HEADER & BARRA DE ACESSIBILIDADE/CARRINHO */
+        header {
+            background-color: var(--branco);
+            border-bottom: 1px solid var(--borda);
+            padding: 20px;
+            position: relative;
+            z-index: 999;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        .header-logo {
+            text-align: left;
+        }
+        .header-logo h1 {
+            font-family: var(--font-luxury);
+            font-size: 1.8rem;
+            color: var(--preto-luxo);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .header-logo p {
+            font-size: 0.7rem;
+            color: var(--ouro-velho);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 2px;
+        }
+
+        /* CONTROLES DO USUÁRIO (Canto Superior Direito) */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .control-btn {
+            background: var(--cinza-suave);
+            border: 1px solid var(--borda);
+            color: var(--preto-luxo);
+            padding: 10px 14px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: var(--transicao-suave);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .control-btn:hover {
+            background-color: var(--ouro-velho);
+            color: #ffffff;
+            border-color: var(--ouro-velho);
+        }
+        .btn-cart-trigger {
+            background: var(--preto-luxo);
+            color: var(--branco);
+            position: relative;
+        }
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--ouro-velho);
+            color: white;
+            font-size: 0.65rem;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+        }
+        .hero-content {
+            text-align: left;
+        }
+        .hero-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ouro-velho);
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 600;
+        }
+        .hero h2 {
+            font-family: var(--font-luxury);
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: var(--preto-luxo);
+        }
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 35px;
+            opacity: 0.9;
+        }
+        .hero-image-placeholder {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, var(--cinza-suave) 0%, var(--borda) 100%);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-luxury);
+            letter-spacing: 2px;
+            color: var(--ouro-velho);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            padding: 20px;
+            text-align: center;
+        }
+        .hero-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        /* HISTÓRIA DA MARCA */
+        .brand-story {
+            background-color: var(--branco);
+            padding: 80px 20px;
+            border-top: 1px solid var(--borda);
+            border-bottom: 1px solid var(--borda);
+        }
+        .story-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .story-container h2 {
+            font-family: var(--font-luxury);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            color: var(--preto-luxo);
+        }
+        .story-container p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        .story-signature {
+            font-family: var(--font-luxury);
+            color: var(--ouro-velho);
+            font-weight: 500;
+            margin-top: 30px;
+            letter-spacing: 2px;
+        }
+
+        /* GRID DE BENEFÍCIOS MODERNO (ABAIXO DO BANNER) */
+        .benefits-grid-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .benefit-card {
+            background: var(--branco);
+            border: 1px solid var(--borda);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 4px;
+            transition: var(--transicao-suave);
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--ouro-velho);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        }
+        .benefit-card svg {
+            width: 36px;
+            height: 36px;
+            fill: var(--ouro-velho);
+            margin-bottom: 15px;
+        }
+        .benefit-card h4 {
+            font-family: var(--font-luxury);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            color: var(--preto-luxo);
+        }
+        .benefit-card p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* SEÇÃO DE PRODUTOS */
+        .section-title {
+            text-align: center;
+            font-family: var(--font-luxury);
+            font-size: 2rem;
+            margin: 60px 0 30px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--preto-luxo);
+        }
+        .products-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 80px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background: var(--branco);
+            border: 1px solid var(--borda);
+            border-radius: 4px;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            transition: var(--transicao-suave);
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--ouro-velho);
+            box-shadow: 0 20px 40px rgba(140, 120, 83, 0.1);
+        }
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--ouro-velho);
+            color: #ffffff;
+            font-size: 0.65rem;
+            padding: 4px 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            z-index: 2;
+        }
+        .product-image-container {
+            width: 100%;
+            height: 280px;
+            background-color: var(--cinza-suave);
+            margin-bottom: 25px;
+            border-radius: 2px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transicao-suave);
+        }
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        .quick-view-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: var(--transicao-suave);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .product-card:hover .quick-view-overlay {
+            opacity: 1;
+        }
+        .product-brand {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--ouro-velho);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .product-name {
+            font-family: var(--font-luxury);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--preto-luxo);
+            min-height: 2.4rem;
+        }
+        .product-price {
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--preto-luxo);
+            margin-bottom: 25px;
+        }
+
+        /* BOTÕES PRINCIPAIS */
+        .btn-cta {
+            display: inline-block;
+            background-color: var(--preto-luxo);
+            color: var(--branco);
+            padding: 14px 35px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: 1px solid var(--preto-luxo);
+            transition: var(--transicao-suave);
+            cursor: pointer;
+            width: 100%;
+        }
+        .btn-cta:hover {
+            background-color: transparent;
+            color: var(--preto-luxo);
+            border-color: var(--preto-luxo);
+        }
+
+        /* SEÇÃO DE AVALIAÇÕES COM CARROSSEL */
+        .testimonials-section {
+            background-color: var(--cinza-suave);
+            padding: 80px 20px;
+            overflow: hidden;
+        }
+        .carousel-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .testimonial-track {
+            display: flex;
+            transition: var(--transicao-suave);
+        }
+        .testimonial-slide {
+            min-width: 100%;
+            text-align: center;
+            padding: 20px;
+        }
+        .client-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 2px solid var(--ouro-velho);
+        }
+        .stars {
+            color: var(--ouro-velho);
+            margin-bottom: 15px;
+        }
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .client-info {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .client-date {
+            font-size: 0.75rem;
+            opacity: 0.6;
+        }
+
+        /* ASSISTENTE VIRTUAL (QUIZ) */
+        .quiz-teaser {
+            background-color: var(--branco);
+            border: 1px solid var(--borda);
+            padding: 40px;
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .quiz-teaser h3 {
+            font-family: var(--font-luxury);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* MODAIS (VISUALIZAÇÃO RÁPIDA / ASSISTENTE) */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transicao-suave);
+        }
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            background: var(--bg-principal);
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            border-radius: 4px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--preto-luxo);
+        }
+
+        /* CARRINHO DE COMPRAS DESLIZANTE (LATERAL) */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 400px;
+            max-width: 100%;
+            height: 100%;
+            background: var(--bg-principal);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            z-index: 1500;
+            transition: var(--transicao-suave);
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+        }
+        .cart-sidebar.active {
+            right: 0;
+        }
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--borda);
+            padding-bottom: 15px;
+        }
+        .cart-header h3 {
+            font-family: var(--font-luxury);
+            font-size: 1.4rem;
+        }
+        .free-shipping-progress {
+            background: var(--cinza-suave);
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .progress-bar-container {
+            background: var(--borda);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        .progress-bar-fill {
+            background: var(--ouro-velho);
+            height: 100%;
+            width: 0%;
+            transition: var(--transicao-suave);
+        }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+        }
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--borda);
+        }
+        .cart-item img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            background: var(--cinza-suave);
+        }
+        .cart-item-details {
+            flex: 1;
+        }
+        .cart-item-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .cart-item-price {
+            font-size: 0.85rem;
+            color: var(--ouro-velho);
+        }
+        .remove-item-btn {
+            background: none;
+            border: none;
+            color: red;
+            cursor: pointer;
+            font-size: 0.75rem;
+            margin-top: 5px;
+        }
+        .cart-footer {
+            border-top: 1px solid var(--borda);
+            padding-top: 20px;
+        }
+        .cart-coupon-section {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .cart-coupon-section input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--borda);
+            background: var(--branco);
+            color: var(--texto-principal);
+        }
+
+        /* WHATSAPP FLUTUANTE INTEGRADO */
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1400;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .whatsapp-chat {
+            background: var(--branco);
+            border: 1px solid var(--borda);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 280px;
+            margin-bottom: 10px;
+            display: none;
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
+        }
+        .whatsapp-chat.active {
+            display: block;
+        }
+        .chat-header {
+            background: #25d366;
+            color: white;
+            padding: 12px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .chat-body {
+            padding: 15px;
+            font-size: 0.8rem;
+            background: var(--bg-principal);
+        }
+        .whatsapp-btn {
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(37,211,102,0.4);
+            cursor: pointer;
+            transition: var(--transicao-suave);
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+        .whatsapp-btn svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        /* SEÇÃO DE CAPTURA VIP */
+        .cta-section {
+            background-color: #1a1917;
+            color: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .cta-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .cta-section h2 {
+            font-family: var(--font-luxury);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        .cta-section p {
+            font-weight: 300;
+            opacity: 0.8;
+            margin-bottom: 35px;
+            font-size: 0.95rem;
+        }
+        .form-vip {
+            display: flex;
+            gap: 10px;
+        }
+        .form-vip input[type="email"] {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-family: var(--font-text);
+            font-size: 0.9rem;
+        }
+        .form-vip input[type="email"]:focus {
+            outline: none;
+            border-color: var(--ouro-velho);
+        }
+        .form-vip .btn-cta {
+            background-color: var(--ouro-velho);
+            border-color: var(--ouro-velho);
+            width: auto;
+        }
+        .form-vip .btn-cta:hover {
+            background-color: #ffffff;
+            color: #111111;
+        }
+
+        /* FOOTER COM REDES SOCIAIS */
+        footer {
+            background-color: #111111;
+            color: #ffffff;
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            border-top: 1px solid #222;
+        }
+        .social-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: #ffffff;
+            transition: var(--transicao-suave);
+            text-decoration: none;
+        }
+        .social-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+        .facebook:hover { background: #3b5998; border-color: transparent; }
+        .instagram:hover { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); border-color: transparent; }
+        .pinterest:hover { background: #E60023; border-color: transparent; }
+        .tiktok:hover { background: #000000; border-color: #00f2fe; }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 992px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-content { text-align: center; }
+            .hero h2 { font-size: 2.2rem; }
+            .hero-image-placeholder { height: 300px; }
+        }
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-logo { text-align: center; }
+            .form-vip { flex-direction: column; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR DE BENEFÍCIOS FIXA -->
+    <div class="top-benefits-bar">
+        <div class="benefit-item">
+            <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6.5l2.25 3H17v-3h1.5z"/></svg>
+            Frete para todo o Brasil
+        </div>
+        <div class="benefit-item">
+            <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            Compra 100% Segura
+        </div>
+        <div class="benefit-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            Produtos Originais
+        </div>
+        <div class="benefit-item">
+            <svg viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+            Parcelamento em até 12x
+        </div>
+    </div>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="header-container">
+            <div class="header-logo">
+                <h1>Enchantique Elegance</h1>
+                <p>Alta Perfumaria Importada</p>
+            </div>
+            
+            <div class="header-controls">
+                <button class="control-btn" onclick="toggleTdahMode()" title="Reduzir estímulos e aumentar legibilidade">Modo TDAH</button>
+                <button class="control-btn" onclick="toggleDarkMode()" id="mode-toggle">Modo Escuro</button>
+                <button class="control-btn btn-cart-trigger" onclick="toggleCartSidebar()">
+                    Carrinho
+                    <span class="cart-badge" id="cart-badge-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">Fragrâncias Originais</span>
+            <h2>O luxo traduzido em aroma</h2>
+            <p>Explore nossa seleção exclusiva dos perfumes importados mais desejados do mundo. Encontre o aroma que define sua presença e eterniza sua personalidade.</p>
+            <a href="#colecao" class="btn-cta" style="text-align: center;">Ver Coleção Exclusiva</a>
+        </div>
+        <div class="hero-image-placeholder">
+            <!-- Insira sua imagem JPG ou WEBP substituindo a tag abaixo -->
+            <img src="./img/logo2.jpg" alt="Enchantique Campaign" onerror="this.style.display='none';">
+            <span>Enchantique Campaign</span>
+        </div>
+    </section>
+
+    <!-- HISTÓRIA DA MARCA -->
+    <section class="brand-story">
+        <div class="story-container">
+            <h2>Nossa Essência</h2>
+            <p>Nascida sob o céu de Paris com o propósito de aproximar a arte da perfumaria de nicho ao público brasileiro mais exigente, a Enchantique Elegance redefine o significado de presença. Acreditamos que um perfume não é apenas um acessório final, mas sim uma assinatura invisível e indestrutível de quem o veste.</p>
+            <p>Selecionamos cada nota, cada frasco e cada grife com rigor de joalheiro, garantindo originalidade impecável e curadoria voltada ao bem-estar e sofisticação.</p>
+            <div class="story-signature">A Arte do Aroma Atemporal</div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE BENEFÍCIOS (CARDS DE LUXO) -->
+    <section class="benefits-grid-section">
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg>
+                <h4>Envio Rápido</h4>
+                <p>Postagem prioritária expressa para todo o Brasil.</p>
+            </div>
+            <div class="benefit-card">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                <h4>Compra Segura</h4>
+                <p>Criptografia de ponta a ponta nas transações.</p>
+            </div>
+            <div class="benefit-card">
+                <svg viewBox="0 0 24 24"><path d="M12 22c4.97 0 9-4.03 9-9V7l-9-5-9 5v6c0 4.97 4.03 9 9 9z"/></svg>
+                <h4>100% Originais</h4>
+                <p>Garantia contratual de procedência selada.</p>
+            </div>
+            <div class="benefit-card">
+                <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+                <h4>Atendimento VIP</h4>
+                <p>Personal Shopper em tempo integral por WhatsApp.</p>
+            </div>
+            <div class="benefit-card">
+                <svg viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9z"/></svg>
+                <h4>Pagamento Seguro</h4>
+                <p>Parcele sem juros com aprovação em segundos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASSISTENTE VIRTUAL (TEASER DO QUIZ) -->
+    <section class="quiz-teaser">
+        <h3>Qual perfume combina mais com você?</h3>
+        <p style="margin-bottom: 20px;">Use nossa Inteligência Olfativa para encontrar seu par de fragrâncias ideal.</p>
+        <button class="btn-cta" onclick="openQuiz()" style="max-width: 280px;">Iniciar Assistente Olfativo</button>
+    </section>
+
+    <!-- SEÇÃO DE PRODUTOS -->
+    <section id="colecao">
+        <h2 class="section-title">Os Mais Desejados</h2>
+        <main class="products-grid" id="products-container"></main>
+    </section>
+
+    <!-- CARROSSEL DE TESTEMUNHOS -->
+    <section class="testimonials-section">
+        <div class="carousel-container">
+            <div class="testimonial-track" id="testimonial-track">
+                <div class="testimonial-slide">
+                    <img src="./assets/client1.jpg" class="client-photo" alt="Foto da Cliente" onerror="this.src='https://placehold.co/80x80/8c7853/ffffff?text=E'">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Nunca vi tanta sofisticação em uma embalagem. O atendimento me auxiliou a escolher o Paradoxe e é simplesmente maravilhoso."</p>
+                    <p class="client-info">Amanda Costa</p>
+                    <p class="client-date">Compra realizada em 12/03/2026</p>
+                </div>
+                <div class="testimonial-slide">
+                    <img src="./assets/client2.jpg" class="client-photo" alt="Foto da Cliente" onerror="this.src='https://placehold.co/80x80/8c7853/ffffff?text=E'">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Fixação exemplar, entrega realizada no dia seguinte em São Paulo. Recomendo muito!"</p>
+                    <p class="client-info">Mariana Albuquerque</p>
+                    <p class="client-date">Compra realizada em 08/04/2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO VIP -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Faça Parte do Clube Privé</h2>
+            <p>Inscreva-se para receber ofertas secretas, lançamentos em primeira mão e frete grátis na sua primeira compra de importados.</p>
+            <form class="form-vip" onsubmit="event.preventDefault(); alert('Bem-vindo ao clube da elegância!');">
+                <input type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit" class="btn-cta">Garantir Acesso</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER COM REDES SOCIAIS -->
+    <footer>
+        <div class="social-container">
+            <a href="#" class="social-icon facebook" aria-label="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+            </a>
+            <a href="#" class="social-icon instagram" aria-label="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" class="social-icon pinterest" aria-label="Pinterest">
+                <svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.966 1.406-5.966s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.166-1.495-.694-2.433-2.872-2.433-4.629 0-3.766 2.737-7.229 7.892-7.229 4.144 0 7.365 2.955 7.365 6.9 0 4.12-2.597 7.433-6.202 7.433-1.212 0-2.35-.63-2.74-1.373 0 0-.599 2.282-.746 2.833-.27.105-.6 2.21-.89 2.68.96.291 1.98.447 3.04.447 6.62 0 11.988-5.365 11.988-11.988C24.005 5.367 18.636 0 12.017 0z"/></svg>
+            </a>
+            <a href="#" class="social-icon tiktok" aria-label="TikTok">
+                <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.01 1.62 4.14.94 1.07 2.27 1.81 3.69 2.1v3.89c-1.37-.14-2.68-.67-3.79-1.52-.39-.3-.75-.64-1.07-1.01v6.74c-.07 1.83-.64 3.63-1.68 5.12-1.2 1.72-3.04 2.92-5.11 3.32-2.34.46-4.83.05-6.9-1.15-2.12-1.23-3.64-3.37-4.14-5.79-.58-2.77.13-5.7 1.93-7.94 1.72-2.15 4.34-3.48 7.07-3.56.09 1.34.02 2.69.02 4.04-1.68.04-3.34.77-4.41 2.07-1.06 1.29-1.41 3.05-.96 4.69.42 1.54 1.57 2.83 3.06 3.44 1.45.6 3.12.51 4.5-.25 1.32-.73 2.18-2.1 2.33-3.61.02-3.83.01-7.66.01-11.49z"/></svg>
+            </a>
+        </div>
+        <p>&copy; 2026 Enchantique Elegance. Todos os direitos reservados. Garantia de procedência e autenticidade de 100% em cada frasco.</p>
+    </footer>
+
+    <!-- LIBRAS ACCESSIBILITY -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+    <!-- WIDGET INTEGRADO DO WHATSAPP -->
+    <div class="whatsapp-widget">
+        <div class="whatsapp-chat" id="whats-chat">
+            <div class="chat-header">
+                <span>Elegance Assistant</span>
+                <span style="cursor:pointer;" onclick="toggleWhatsChat()">✖</span>
+            </div>
+            <div class="chat-body">
+                <p>Olá! Seja bem-vindo à Enchantique Elegance. Como podemos guiar sua experiência sensorial hoje?</p>
+                <a href="https://wa.me/5511971916703?text=Olá,%20gostaria%20de%20um%20auxílio%20com%20a%20escolha%20de%20meu%20perfume!" target="_blank" class="btn-cta" style="margin-top:10px; font-size:0.7rem; padding:8px 10px; text-align:center;">Falar com consultor</a>
+            </div>
+        </div>
+        <div class="whatsapp-btn" onclick="toggleWhatsChat()">
+            <svg viewBox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.761.46 3.475 1.332 4.992L2 22l5.166-1.355c1.472.802 3.127 1.228 4.834 1.228h.012c5.505 0 9.992-4.481 9.992-9.988 0-2.671-1.04-5.18-2.929-7.07A9.925 9.925 0 0 0 12.012 2zm5.78 13.918c-.244.686-1.42 1.323-1.956 1.408-.475.074-.988.13-3.111-.75-2.716-1.124-4.444-3.893-4.579-4.075-.136-.183-1.106-1.47-1.106-2.805 0-1.335.702-1.99.952-2.253.25-.262.548-.328.732-.328.183 0 .366.002.525.01.165.008.388-.063.606.463.225.543.769 1.884.836 2.018.067.135.112.292.023.472-.09.18-.135.292-.27.449-.135.158-.284.351-.405.472-.136.136-.278.284-.12.556.158.272.7 1.15 1.5 1.864.71.636 1.31 1.011 1.597 1.15.286.139.45.118.618-.074.168-.192.716-.833.91-.118.192.308.835 1.411 1.144 1.554.308.143.513.069.658.04.146-.029.957-.39 1.096-.767z"/></svg>
+        </div>
+    </div>
+
+    <!-- LATERAL CARRINHO -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Carrinho Elegance</h3>
+            <button class="close-modal" style="position:static;" onclick="toggleCartSidebar()">✕</button>
+        </div>
+        <div class="free-shipping-progress">
+            <span id="free-shipping-text">Faltam R$ 300 para você ganhar Frete Grátis!</span>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="shipping-progress"></div>
+            </div>
+        </div>
+        <div class="cart-items" id="cart-items-list">
+            <!-- Gerado via JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-coupon-section">
+                <input type="text" id="cart-coupon" placeholder="CUPOM">
+                <button class="control-btn" onclick="applyCoupon()">Aplicar</button>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom: 10px;">
+                <span>Total:</span>
+                <span id="cart-total-value" style="font-weight:700;">R$ 0,00</span>
+            </div>
+            <button class="btn-cta" onclick="checkout()">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <!-- MODAL DE VISUALIZAÇÃO RÁPIDA -->
+    <div class="modal" id="quick-view-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('quick-view-modal')">✕</button>
+            <div id="quick-view-content"></div>
+        </div>
+    </div>
+
+    <!-- MODAL DO ASSISTENTE SENSORIAL -->
+    <div class="modal" id="quiz-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('quiz-modal')">✕</button>
+            <div id="quiz-flow">
+                <h3 style="font-family:var(--font-luxury); margin-bottom: 15px;">Assistente Olfativo</h3>
+                <div id="quiz-step-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* BASE DE PRODUTOS SENSACIONAIS */
+         <!-- Insira sua imagem JPG ou WEBP substituindo a tag abaixo -->
+        const baseProducts = [
+            { id: 1, name: "La Vie Est Belle", brand: "Lancôme", price: 689.00, badge: "Best Seller", img:"./img/laviebelle.jpg", desc: "Uma declaração universal à beleza da vida. Composta por flores de jasmim e patchouli selvagem." },
+            { id: 2, name: "Good Girl", brand: "Carolina Herrera", price: 749.00, badge: "Destaque", img: "./img/carolinaherreragoodgirl.webp", desc: "Audaciosa e extremamente sofisticada. O aroma da dualidade feminina com cacau e fava tonka." },
+             { id: 3, name: "Paradoxe", brand: "Prada", price: 799.00, badge: "Lançamento", img: "./img/paradoxe.webp", desc: "A reinvenção da flor de laranjeira combinando o frescor com uma vibrante nota de âmbar." },
+            { id: 4, name: "Bleu de Chanel", brand: "Chanel", price: 849.00, badge: "Exclusivo", img: "./img/chanelbleudechanel.webp", desc: "O perfume do homem moderno e audacioso que recusa o conformismo. Notas cítricas e amadeiradas." },
+            { id: 5, name: "Sauvage", brand: "Dior", price: 719.00, badge: "Premium", img: "./img/diorsauvage.webp", desc: "Uma criação inspirada nos espaços abertos. O frescor extremo do deserto encontra o calor da madeira de sândalo." },
+            { id: 6, name: "Libre Intense", brand: "Yves Saint Laurent", price: 789.00, badge: "Destaque", img: "./img/libre.webp", desc: "A tensão marcante entre a lavanda francesa e a flor de laranjeira de Marrocos." },
+            { id: 7, name: "1 Million Elixir", brand: "Paco Rabanne", price: 699.00, badge: "Sucesso", img: "./img/1millionparfummasculino.webp", desc: "O auge da intensidade de 1 Million. Ingredientes selecionados à mão colhidos globalmente." },
+            { id: 8, name: "J'adore L'Or", brand: "Dior", price: 829.00, badge: "Clássico", img: "./img/jadore.webp", desc: "A essência da sofisticação clássica da Dior. Uma harmonia floral incrivelmente sensual." }
+        ];
+
+        let cart = [];
+        let couponDiscount = 0;
+
+        /* RENDERIZADOR DE PRODUTOS */
+        function renderProducts() {
+            const container = document.getElementById('products-container');
+            container.innerHTML = baseProducts.map(p => `
+                <article class="product-card">
+                    <span class="badge">${p.badge}</span>
+                    <div class="product-image-container" onclick="openQuickView(${p.id})">
+                        <img src="${p.img}" alt="${p.name}" class="product-image" onerror="this.src='https://placehold.co/300x300/f4f0e8/8c7853?text=${p.name}'">
+                        <div class="quick-view-overlay">Visualização Rápida</div>
+                    </div>
+                    <p class="product-brand">${p.brand}</p>
+                    <h3 class="product-name">${p.name}</h3>
+                    <p class="product-price">R$ ${p.price.toFixed(2)}</p>
+                    <button class="btn-cta" onclick="addToCart(${p.id})">Adicionar ao Carrinho</button>
+                </article>
+            `).join('');
+        }
+
+        /* ACESSIBILIDADE E TEMAS */
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            document.getElementById('mode-toggle').innerText = isDark ? "Modo Claro" : "Modo Escuro";
+        }
+
+        function toggleTdahMode() {
+            document.body.classList.toggle('tdah-mode');
+            const isTdah = document.body.classList.contains('tdah-mode');
+            if(isTdah) {
+                alert("Modo Foco (TDAH) ativado: Fontes limpas com maior legibilidade, reduzimos brilhos, tiramos transições rápidas e efeitos de movimento.");
+            }
+        }
+
+        /* CARRINHO */
+        function toggleCartSidebar() {
+            document.getElementById('cart-sidebar').classList.toggle('active');
+        }
+
+        function addToCart(id) {
+            const prod = baseProducts.find(p => p.id === id);
+            cart.push(prod);
+            updateCart();
+            document.getElementById('cart-sidebar').classList.add('active');
+        }
+
+        function updateCart() {
+            document.getElementById('cart-badge-count').innerText = cart.length;
+            const list = document.getElementById('cart-items-list');
+            let total = 0;
+
+            list.innerHTML = cart.map((item, index) => {
+                total += item.price;
+                return `
+                    <div class="cart-item">
+                        <img src="${item.img}" alt="${item.name}" onerror="this.src='https://placehold.co/70x70/f4f0e8/8c7853?text=${item.name}'">
+                        <div class="cart-item-details">
+                            <p class="cart-item-title">${item.name}</p>
+                            <p class="cart-item-price">R$ ${item.price.toFixed(2)}</p>
+                            <button class="remove-item-btn" onclick="removeFromCart(${index})">Remover</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Progresso de Frete Grátis (Meta R$ 800,00)
+            const target = 800;
+            const percentage = Math.min((total / target) * 100, 100);
+            document.getElementById('shipping-progress').style.width = percentage + '%';
+            if(total >= target) {
+                document.getElementById('free-shipping-text').innerText = "Parabéns! Você ganhou Frete Grátis!";
+            } else {
+                document.getElementById('free-shipping-text').innerText = `Faltam R$ ${(target - total).toFixed(2)} para você ganhar Frete Grátis!`;
+            }
+
+            const finalTotal = Math.max(total - couponDiscount, 0);
+            document.getElementById('cart-total-value').innerText = `R$ ${finalTotal.toFixed(2)}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function applyCoupon() {
+            const coup = document.getElementById('cart-coupon').value;
+            if(coup.toUpperCase() === "ELEGANCE10") {
+                couponDiscount = 50;
+                alert("Cupom aplicado com sucesso: R$ 50,00 de desconto.");
+                updateCart();
+            } else {
+                alert("Cupom inválido.");
+            }
+        }
+
+        function checkout() {
+            if(cart.length === 0) return alert("Seu carrinho está vazio!");
+            alert("Agradecemos a sua preferência por elegância pura. Redirecionando para nossa via de finalização segura...");
+            cart = [];
+            updateCart();
+            toggleCartSidebar();
+        }
+
+        /* VISUALIZAÇÃO RÁPIDA (MODAL) */
+        function openQuickView(id) {
+            const p = baseProducts.find(prod => prod.id === id);
+            const content = document.getElementById('quick-view-content');
+            content.innerHTML = `
+                <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:20px;">
+                    <img src="${p.img}" alt="${p.name}" style="width:200px; height:200px; object-fit:cover; background:var(--cinza-suave);" onerror="this.src='https://placehold.co/200x200/f4f0e8/8c7853?text=${p.name}'">
+                    <div style="flex:1; min-width:200px;">
+                        <p style="color:var(--ouro-velho); text-transform:uppercase; font-size:0.75rem;">${p.brand}</p>
+                        <h2 style="font-family:var(--font-luxury); margin-bottom:10px;">${p.name}</h2>
+                        <p style="font-size:0.9rem; margin-bottom:15px;">${p.desc}</p>
+                        <p style="font-weight:700; font-size:1.4rem; margin-bottom:15px;">R$ ${p.price.toFixed(2)}</p>
+                        <button class="btn-cta" onclick="addToCart(${p.id}); closeModal('quick-view-modal');">Comprar agora</button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('quick-view-modal').classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        /* WHATSAPP CHAT */
+        function toggleWhatsChat() {
+            document.getElementById('whats-chat').classList.toggle('active');
+        }
+
+        /* ASSISTENTE OLFATIVO (QUIZ) */
+        let quizAnswers = {};
+        function openQuiz() {
+            quizAnswers = {};
+            document.getElementById('quiz-modal').classList.add('active');
+            showQuizStep(1);
+        }
+
+        function showQuizStep(step) {
+            const stepContent = document.getElementById('quiz-step-content');
+            if(step === 1) {
+                stepContent.innerHTML = `
+                    <p style="margin-bottom:15px;">Qual é a sua preferência aromática?</p>
+                    <button class="btn-cta" style="margin-bottom:10px;" onclick="chooseQuiz(1, 'fresco')">Frescos & Cítricos</button>
+                    <button class="btn-cta" onclick="chooseQuiz(1, 'intenso')">Intensos & Amadeirados</button>
+                `;
+            } else if(step === 2) {
+                stepContent.innerHTML = `
+                    <p style="margin-bottom:15px;">Qual a principal ocasião de uso?</p>
+                    <button class="btn-cta" style="margin-bottom:10px;" onclick="chooseQuiz(2, 'dia')">Dia a Dia / Trabalho</button>
+                    <button class="btn-cta" onclick="chooseQuiz(2, 'noite')">Eventos Sociais e Noite</button>
+                `;
+            } else if(step === 3) {
+                // Sugestão Baseada em Escolhas Básicas
+                let match = baseProducts[0];
+                if(quizAnswers[1] === 'intenso' && quizAnswers[2] === 'noite') match = baseProducts[3]; // Bleu de Chanel ou Sauvage
+                if(quizAnswers[1] === 'fresco' && quizAnswers[2] === 'noite') match = baseProducts[2]; // Paradoxe
+                if(quizAnswers[1] === 'intenso' && quizAnswers[2] === 'dia') match = baseProducts[4]; // Sauvage
+
+                stepContent.innerHTML = `
+                    <p style="margin-bottom:15px;">Preparamos uma recomendação exclusiva baseada em suas respostas:</p>
+                    <div style="border:1px solid var(--borda); padding:15px; text-align:center;">
+                        <img src="${match.img}" style="width:100px; height:100px; object-fit:cover;" onerror="this.src='https://placehold.co/100x100/f4f0e8/8c7853?text=${match.name}'">
+                        <h4>${match.name}</h4>
+                        <p style="font-size:0.8rem; margin:8px 0;">${match.brand}</p>
+                        <p style="font-weight:700;">R$ ${match.price.toFixed(2)}</p>
+                        <button class="btn-cta" style="margin-top:10px;" onclick="addToCart(${match.id}); closeModal('quiz-modal');">Adicionar Recomendado</button>
+                    </div>
+                `;
+            }
+        }
+
+        function chooseQuiz(step, value) {
+            quizAnswers[step] = value;
+            showQuizStep(step + 1);
+        }
+
+        /* CARROSSEL DE TESTEMUNHOS AUTOMÁTICO */
+        let slideIndex = 0;
+        function runTestimonials() {
+            // Se estiver no modo TDAH, o slide não se mexe sozinho para evitar perda de foco
+            if (document.body.classList.contains('tdah-mode')) return;
+
+            const track = document.getElementById('testimonial-track');
+            slideIndex = (slideIndex + 1) % 2; 
+            track.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+        setInterval(runTestimonials, 6000);
+
+        // Inicializador
+        window.onload = () => {
+            renderProducts();
+        };
+    </script>
+</body>
+</html>
